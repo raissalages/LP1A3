@@ -8,8 +8,6 @@ import java.util.logging.SimpleFormatter;
 
 public class Main {
     public static void main(String[] args) {
-        final int ammountOfStrings = 2;
-
         Logger logger = Logger.getLogger(Main.class.getName());
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-LLL-yyyy-HH:mm:ss", Locale.ENGLISH);
         LocalDateTime now = LocalDateTime.now();
@@ -32,46 +30,59 @@ public class Main {
         List<String> listOne = new ArrayList<>();
         List<String> listTwo = new ArrayList<>();
         List<String> listThree = new LinkedList<>();
+        boolean success;
+        final int ammountOfStrings = 2;
 
-        try{
-            for(int i = 0; i < ammountOfStrings; i++){
-                System.out.print("Insert string: ");
-                RedundantMethodThatAddsElementToAListForReasonsThatAreBeyondMyUnderstanding(listOne, StringChecker(scanner.nextLine()));
-                System.out.print("Insert string: ");
-                RedundantMethodThatAddsElementToAListForReasonsThatAreBeyondMyUnderstanding(listTwo, StringChecker(scanner.nextLine()));
-                System.out.print("Insert string: ");
-                RedundantMethodThatAddsElementToAListForReasonsThatAreBeyondMyUnderstanding(listThree, StringChecker(scanner.nextLine()));
-
+        do {
+            try {
+                for (int i = 0; i < ammountOfStrings; i++) {
+                    if(listOne.size() < ammountOfStrings){
+                        System.out.print("Insert string: ");
+                        RedundantMethodThatAddsElementToAListForReasonsThatAreBeyondMyUnderstanding(listOne, StringChecker(scanner.nextLine()));
+                    }
+                    if(listTwo.size() < ammountOfStrings){
+                        System.out.print("Insert string: ");
+                        RedundantMethodThatAddsElementToAListForReasonsThatAreBeyondMyUnderstanding(listTwo, StringChecker(scanner.nextLine()));
+                    }
+                    if(listThree.size() < ammountOfStrings){
+                        System.out.print("Insert string: ");
+                        RedundantMethodThatAddsElementToAListForReasonsThatAreBeyondMyUnderstanding(listThree, StringChecker(scanner.nextLine()));
+                    }
+                }
+                success = true;
+            } catch (NumberOnStringException exception) {
+                System.out.println(exception.getMessage() + " Caused by: " + exception.getTriggerNumber());
+                success = false;
             }
-        }catch (NumberOnStringException exception){
-            System.out.println(exception.getMessage() + " Caused by: " + exception.getTriggerNumber());
-        }
+        } while (!success);
+
+
         System.out.println();
 
         ConcatLists(listOne, listTwo, listThree);
         System.out.println("List 1 concatenada com listas 2 e 3: ");
-        for(String string : listOne){
+        for (String string : listOne) {
             System.out.println(string + ";");
         }
         System.out.println();
 
-        if(AreSharingAnElement(listOne, listTwo)){
+        if (AreSharingAnElement(listOne, listTwo)) {
             System.out.println("Lista 2 possui elementos em 1.");
-        }else{
+        } else {
             System.out.println("Lista 2 não possui elementos em 1.");
         }
         System.out.println();
 
-        if(ShareAllElements(listOne, listThree)){
+        if (ShareAllElements(listOne, listThree)) {
             System.out.println("Lista 1 contem todos os elementos da lista 3.");
-        }else{
+        } else {
             System.out.println("Lista 1 não contem todos os elementos da lista 3.");
         }
         System.out.println();
 
-        if(listOne.equals(listTwo)){
+        if (listOne.equals(listTwo)) {
             System.out.println("Lista 1 e 2 são iguais.");
-        }else{
+        } else {
             System.out.println("Lista 1 e 2 são diferentes.");
         }
         System.out.println();
@@ -87,7 +98,7 @@ public class Main {
         System.out.println();
 
         System.out.println("Removendo os elementos da lsita 1 que pertencem a 3...");
-        for(String string : listThree){
+        for (String string : listThree) {
             listOne.remove(string);
         }
         System.out.println();
@@ -99,15 +110,15 @@ public class Main {
         listThree.clear();
         System.out.println();
 
-        if(listThree.isEmpty()){
+        if (listThree.isEmpty()) {
             System.out.println("Lsita 3 esta vazia.");
-        }else{
+        } else {
             System.out.println("Lista 3 não está vazia.");
         }
         System.out.println();
 
         System.out.println("Elementos da lista 1: ");
-        for(String string : listOne){
+        for (String string : listOne) {
             System.out.println(string + ";");
         }
 
