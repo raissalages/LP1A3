@@ -1,0 +1,26 @@
+Sistema de gerenciamento de biblioteca
+
+Livros
+Usuarios
+  -Nome
+  -CPF
+  -Endereco
+  +ADM
+    *Gerencia funcionarios, livros e usuarios
+  +Funcionario
+    *Gerencia Livros, Funcionarios e Emprestimos
+  +Cliente
+    *Gerencia Reservas
+Emprestimos
+  -Lista<Livros>
+  -Data Emprestimo
+  -Data Devolucao
+  -Cliente
+  *Controle de devolucao: Todos os livros sao devolvidos em 7 dias, Data Devolucao armazena quando o livro foi devolvido.
+  
+Biblioteca
+  -Lista<Usuarios>
+  -Lista<Emprestimos>
+  -Lista<Livros>
+  *Cadastrar, Remover e Atualizar Listas (Emprestimo nao atualiza)
+  *Listar Usuarios e subtipos, Emprestimos e Livros, permitindo filtros
