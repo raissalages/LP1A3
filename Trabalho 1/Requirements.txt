@@ -22,7 +22,7 @@ Biblioteca
   -Lista<Usuarios>
   -Lista<Emprestimos>
   -Lista<Livros>
-  *Cadastrar, Remover e Atualizar Listas (Emprestimo nao atualiza)
+  *Cadastrar, Remover e Atualizar Listas (Emprestimo e livro nao atualiza)
   *Listar Usuarios e subtipos, Emprestimos e Livros, permitindo filtros
 
 Fazer documentação dessa caralha. Puta que pariu.
